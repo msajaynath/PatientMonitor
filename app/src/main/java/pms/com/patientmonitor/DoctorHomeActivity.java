@@ -42,5 +42,14 @@ public class DoctorHomeActivity extends AppCompatActivity {
 
             }
         });
+
+        myinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DoctorHomeActivity.this, DoctorBioActivity.class));
+
+            }
+        });
+
     }
 }

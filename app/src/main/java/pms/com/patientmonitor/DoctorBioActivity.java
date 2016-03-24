@@ -18,72 +18,61 @@ import android.widget.Toast;
 import Entity.Patient;
 import Entity.User;
 
-public class PatientBioActivity extends AppCompatActivity {
+public class DoctorBioActivity extends AppCompatActivity {
 
     private User u;
-    private Patient pat;
-    EditText name,address,phone;
-    Spinner gender;
+    EditText name,department;
+    
     Button update;
     ImageView changePass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient_bio);
+        setContentView(R.layout.activity_doctor_bio);
+
         final SharedPreferences sharedpreferences = getSharedPreferences("PMS", Context.MODE_PRIVATE);
 
         long patid=sharedpreferences.getLong("userid", 0);
 
-         u= User.findById(User.class,patid);
-         pat= Patient.findById(Patient.class,u.getId());
+        u= User.findById(User.class,patid);
 
         changePass= (ImageView) findViewById(R.id.changepass);
         update= (Button) findViewById(R.id.update);
-        gender= (Spinner) findViewById(R.id.gender);
         name= (EditText) findViewById(R.id.name);
-        address= (EditText) findViewById(R.id.address);
-        phone= (EditText) findViewById(R.id.department);
+        department= (EditText) findViewById(R.id.department);
 
         name.setText(u.name);
-        address.setText(pat.address);
-        phone.setText(pat.mob);
-        if(pat.gender.contentEquals("Male"))
-            gender.setSelection(0);
-        else
-            gender.setSelection(1);
+        department.setText(u.department);
+       
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 u.name=name.getText().toString();
-                pat.gender=gender.getSelectedItem().toString();
-                pat.address=address.getText().toString();
-                pat.mob=phone.getText().toString();
-                pat.save();
+               
+                u.department=department.getText().toString();
                 u.save();
-                Toast.makeText(getApplicationContext(),"Updated!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Updated!", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
 
-changePass.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        CheckAndSavePassword(u);
+        changePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CheckAndSavePassword(u);
+            }
+        });
+
+
+
     }
-});
-
-
-
-
-    }
-
     private void CheckAndSavePassword(final User u) {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(PatientBioActivity.this);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(DoctorBioActivity.this);
         alertDialog.setTitle("Change");
-        final EditText oldPass = new EditText(PatientBioActivity.this);
-        final EditText newPass = new EditText(PatientBioActivity.this);
-        final EditText confirmPass = new EditText(PatientBioActivity.this);
+        final EditText oldPass = new EditText(DoctorBioActivity.this);
+        final EditText newPass = new EditText(DoctorBioActivity.this);
+        final EditText confirmPass = new EditText(DoctorBioActivity.this);
 
 
         oldPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -93,7 +82,7 @@ changePass.setOnClickListener(new View.OnClickListener() {
         oldPass.setHint("Old Password");
         newPass.setHint("New Password");
         confirmPass.setHint("Confirm Password");
-        LinearLayout ll=new LinearLayout(PatientBioActivity.this);
+        LinearLayout ll=new LinearLayout(DoctorBioActivity.this);
         ll.setOrientation(LinearLayout.VERTICAL);
 
         ll.addView(oldPass);
@@ -101,7 +90,7 @@ changePass.setOnClickListener(new View.OnClickListener() {
         ll.addView(newPass);
         ll.addView(confirmPass);
         alertDialog.setView(ll);
-        alertDialog.setPositiveButton("Yes",null);
+        alertDialog.setPositiveButton("Yes", null);
         alertDialog.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -126,21 +115,21 @@ changePass.setOnClickListener(new View.OnClickListener() {
                 //Do stuff, possibly set wantToCloseDialog to true then...
                 if (!oldPass.getText().toString().contentEquals(u.password)) {
 
-                    Toast.makeText(PatientBioActivity.this, "Invalid current password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DoctorBioActivity.this, "Invalid current password!", Toast.LENGTH_SHORT).show();
                     return;
 
                 } else {
                     if (newPass.getText().toString().length() < 6) {
-                        Toast.makeText(PatientBioActivity.this, "New Password should be more than 6 characters!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DoctorBioActivity.this, "New Password should be more than 6 characters!", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         if (!newPass.getText().toString().contentEquals(confirmPass.getText().toString())) {
-                            Toast.makeText(PatientBioActivity.this, "Confirm password not same!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DoctorBioActivity.this, "Confirm password not same!", Toast.LENGTH_SHORT).show();
                             return;
                         } else {
                             u.password = newPass.getText().toString();
                             u.save();
-                            Toast.makeText(PatientBioActivity.this, "Password updated!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DoctorBioActivity.this, "Password updated!", Toast.LENGTH_SHORT).show();
                             alert11.cancel();
 
                         }

@@ -60,7 +60,8 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
+        android:inputType="textMultiLine"
+        android:minLines="3"
         android:ems="10"
         android:id="@+id/address"
         android:layout_alignBottom="@+id/textView11"
@@ -81,7 +82,7 @@
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
-        android:id="@+id/phone"
+        android:id="@+id/department"
         android:layout_alignBottom="@+id/textView12"
         android:layout_alignStart="@+id/address" />
 
@@ -100,14 +101,22 @@
         android:text="UPDATE"
         android:id="@+id/update"
         android:layout_marginTop="60dp"
-        android:layout_below="@+id/phone"
+        android:layout_below="@+id/department"
         android:layout_centerHorizontal="true" />
-
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/changepass"
         android:src="@drawable/change_pass"
+        android:layout_above="@+id/textView14"
+        android:layout_alignEnd="@+id/department" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Change Password"
+        android:id="@+id/textView14"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
 
