@@ -49,4 +49,23 @@
         android:layout_below="@+id/my_report"
         android:layout_centerHorizontal="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/patSearch"
+        android:layout_alignParentBottom="true"
+        android:hint="Search for patient"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/logout" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/search"
+        android:src="@android:drawable/ic_menu_search"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/patSearch" />
+
 </RelativeLayout>
