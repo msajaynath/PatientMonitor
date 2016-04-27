@@ -4,7 +4,7 @@ import com.orm.SugarRecord;
 
 /**
  * Created by msajaynath on 19/03/16.
- */public class User extends SugarRecord {
+ */public class User  extends  SugarRecord{
     public String username,name,email,password;
     public String department,job;
 

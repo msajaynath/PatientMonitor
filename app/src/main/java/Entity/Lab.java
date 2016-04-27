@@ -6,26 +6,30 @@ import java.util.Date;
 
 /**
  * Created by msajaynath on 19/03/16.
- */public class Lab extends SugarRecord {
-    public User patient;
+ */public class Lab {
+    public  int labid;
+    public String patient,doctor;
 
     public String diagnosis;
 
-    public int heartrate,pulse,temprature;
+    public int heartrate,pulse;
+    public float temperature;
     public long spo2;
-    public long date;
+    public String date;
 
 
     // You must provide an empty constructor
     public Lab() {}
 
-    public Lab(User patient, String diagnosis, int heartrate,int pulse,int temprature,long spo2,long date)
+    public Lab(int labid,String patient,String doctor, String diagnosis, int heartrate,int pulse,float temperature,long spo2,String date)
     {
+        this.labid=labid;
         this.patient=patient;
+        this.doctor=doctor;
         this.diagnosis=diagnosis;
         this.heartrate=heartrate;
         this.pulse=pulse;
-        this.temprature=temprature;
+        this.temperature=temperature;
         this.spo2=spo2;
         this.date=date;
 

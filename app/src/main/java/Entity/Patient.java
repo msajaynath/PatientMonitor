@@ -4,7 +4,7 @@ import com.orm.SugarRecord;
 
 /**
  * Created by msajaynath on 19/03/16.
- */public class Patient extends SugarRecord {
+ */public class Patient extends  SugarRecord {
     public User doctor;
     public User nurse;
     public User patient;

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Patient Monitor</string>
+    <string name="JDBCUrl">jdbc:mysql://10.0.3.2:3306/patientmonitor</string>
+    <string name="JDBCUsername">root</string>
+    <string name="JDBCPassword" />
     <string-array name="gender_array">
         <item>Male</item>
         <item>Female</item>
